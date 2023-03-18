@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option go_package = "gozo/classify/protocol";
+option objc_class_prefix = "Gozo";
+
+// The greeting service definition.
+service Siamese {
+  // Sends a greeting
+  rpc Predict (PredictRequest) returns (PredictReply) {}
+  rpc StoreFace (StoreFaceRequest) returns (StoreFaceReply) {}
+}
+
+message StoreFaceRequest {
+    bytes file = 1;
+    string name = 2;
+}
+
+message StoreFaceReply {
+    bool success = 1;
+}
+
+// The request message containing the user's name.
+message PredictRequest {
+    bytes file = 1;
+}
+
+// The response message containing the greetings
+message PredictReply {
+    string name = 1;
+}
